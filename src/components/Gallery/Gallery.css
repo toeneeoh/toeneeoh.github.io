@@ -1,0 +1,49 @@
+.gallery-container {
+  max-width: 80vw; /* Make container slightly smaller than the viewport width */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px; /* Add padding around the container */
+  background-color: #2e2e2e; /* Darker background shade */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: add some shadow for better appearance */
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Fixed 5 columns */
+  gap: 20px; /* Space between grid items */
+  width: 100%;
+  justify-content: center; /* Center the grid within the container */
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%; /* Ensure items use the full column width */
+  height: 100px; /* Adjust height as needed */
+}
+
+.gallery-item img {
+  width: 100px;
+  height: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.gallery-item-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.gallery-item:hover .gallery-item-name {
+  opacity: 1;
+}
+
