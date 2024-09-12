@@ -1,16 +1,46 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import Gallery from './components/Gallery/Gallery';
 
-function App() {
-  const [currentCanvas, setCurrentCanvas] = useState(0); // State to track the current canvas
+function Canvas() {
+  const location = useLocation();
+  const [currentCanvas, setCurrentCanvas] = useState(0);
 
-  const navigateToCanvas = (canvasIndex) => {
-    setCurrentCanvas(canvasIndex);
-  };
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/skills':
+        setCurrentCanvas(1);
+        break;
+      case '/projects':
+        setCurrentCanvas(2);
+        break;
+      default:
+        setCurrentCanvas(0);
+    }
+  }, [location.pathname]);
 
-  const containerStyle = {
-    transform: `translateX(-${currentCanvas * 100}vw)`,
-  };
+  return (
+    <div className="canvas-container" style={{ transform: `translateX(-${currentCanvas * 100}vw)` }}>
+      <div className="canvas about-page">
+        <h2>About</h2>
+        <p>Welcome to the About section.</p>
+      </div>
+
+      <div className="canvas skills-page">
+        <Gallery />
+      </div>
+
+      <div className="canvas projects-page">
+        <h2>Projects</h2>
+        <p>Here are some projects.</p>
+      </div>
+    </div>
+  );
+}
+
+function Navigate() {
+  const navigate = useNavigate();
 
   return (
     <div className="App">
@@ -18,32 +48,19 @@ function App() {
       <nav className="navbar">
         <div className="navbar-title">Tony.PL</div>
         <div className="navbar-links">
-          <button onClick={() => navigateToCanvas(0)}>About</button>
-          <button onClick={() => navigateToCanvas(1)}>Skills</button>
-          <button onClick={() => navigateToCanvas(2)}>Projects</button>
+          <button onClick={() => navigate('/')}>About</button>
+          <button onClick={() => navigate('/skills')}>Skills</button>
+          <button onClick={() => navigate('/projects')}>Projects</button>
         </div>
       </nav>
 
-      {/* Container for the canvases */}
-      <div className="canvas-container" style={containerStyle}>
-        {/* Three canvases */}
-        <div className="canvas about-page">
-          <h2>About</h2>
-          <p>Welcome to the About section.</p>
-        </div>
-
-        <div className="canvas skills-page">
-          <h2>Skills</h2>
-          <p>Here are some skills.</p>
-        </div>
-
-        <div className="canvas projects-page">
-          <h2>Projects</h2>
-          <p>Here are some projects.</p>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Canvas />} />
+        <Route path="/skills" element={<Canvas />} />
+        <Route path="/projects" element={<Canvas />} />
+      </Routes>
     </div>
   );
 }
 
-export default App;
+export default Navigate;
