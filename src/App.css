@@ -62,9 +62,11 @@ body {
 .canvas-container {
   display: flex;
   transition: transform 0.5s ease;
+  width: calc(100vh * --num_canvas);
   height: calc(100vh - var(--nav_height)); /* Height below the nav bar */
   position: absolute;
   top: var(--nav_height); /* Adjust below the nav bar */
+  left: 0;
 }
 
 .canvas {
