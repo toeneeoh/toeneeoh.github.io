@@ -1,6 +1,6 @@
 import React from 'react';
 import './Gallery.css'; // Import the CSS file for styling
-import svgImages from '../../assets/svg'; // Import all SVGs
+import svgImages from '../../assets/svg/skills'; // Import all SVGs
 
 const Gallery = () => {
   // Get all SVG file names from the imported object

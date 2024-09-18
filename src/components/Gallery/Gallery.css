@@ -3,7 +3,7 @@
   margin: 0 auto; /* Center the container horizontally */
   padding: 20px; /* Add padding around the container */
   background-color: #2e2e2e; /* Darker background shade */
-  border-radius: 8px; /* Rounded corners for the container */
+  border-radius: 20px; /* Rounded corners for the container */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: add some shadow for better appearance */
 }
 
