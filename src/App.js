@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Gallery from './components/Gallery/Gallery';
+import About from './components/About/About';
 
 function Canvas() {
   const location = useLocation();
@@ -23,8 +24,7 @@ function Canvas() {
   return (
     <div className="canvas-container" style={{ transform: `translateX(-${currentCanvas * 100}vw)` }}>
       <div className="canvas about-page">
-        <h2>About</h2>
-        <p>Welcome to the About section.</p>
+        <About />
       </div>
 
       <div className="canvas skills-page">
