@@ -1,49 +1,110 @@
 .projects-container {
-  max-width: 80vw;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #2e2e2e;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
 }
 
-.projects {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+.dropdown {
+  position: relative;
+  width: auto;
+  margin: 25px;
+}
+
+.dropdown-button {
+  padding: 25px;
+  font-size: 20px;
+  width: 80vw;
+  background-color: #1e1e2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-button:hover {
+  background-color: #29293f;
+  transform: scale(1.02);
+}
+
+.dropdown-content {
+  position: relative;
   width: 100%;
-  justify-content: center;
+  background-color: #2a2a3d;
+  border-radius: 8px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  gap: 50px;
+  justify-content: flex-start;
+  z-index: 500;
+  max-height: 33vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dropdown-blurb {
+  color: #cccccc;
+  font-size: 18px;
+  margin: 0 20px 00px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.dropdown-link {
+  color: #66ccff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.dropdown-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .projects-item {
-  position: relative;
-  width: 100%;
-  height: 100px;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s ease;
 }
 
-.projects-item img {
-  width: 100px;
-  height: 100%;
+.projects-item:hover {
+  transform: scale(1.1);
+}
+
+.projects-image {
   display: block;
   border-radius: 8px;
+  width: auto;
+  max-width: 700px;
+  height: auto;
+  cursor: pointer;
 }
 
-.projects-item-name {
-  position: absolute;
-  bottom: 0;
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
   left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
 }
 
-.projects-item:hover .projects-item-name {
-  opacity: 1;
+.fullscreen-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
 }
-

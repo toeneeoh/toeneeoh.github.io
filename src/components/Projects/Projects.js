@@ -1,30 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import './Projects.css';
-import svgImages from '../../assets/svg/projects';
 
-const Skills = () => {
-  // Get all SVG file names from the imported object
-  const svgFiles = Object.keys(svgImages);
+const importAll = (requireContext) =>
+  requireContext.keys().reduce((images, path) => {
+    const fileName = path.replace('./', '');
+    images[fileName] = requireContext(path);
+    return images;
+  }, {});
+
+const budgetBuddyImages = importAll(require.context('../../assets/png/budget-buddy', false, /\.png$/));
+
+const Projects = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen((prevState) => !prevState);
+  };
+
+  const handleImageClick = (image) => {
+    setFullscreenImage(image);
+  };
+
+  const handleCloseFullscreen = () => {
+    setFullscreenImage(null);
+  };
 
   return (
     <div className="projects-container">
-        <div className="projects">
-        {svgFiles.map((fileName, index) => {
-            const displayName = fileName.replace('.svg', '');
-
-            return (
-            <div key={index} className="projects-item">
-                <img 
-                src={svgImages[fileName]} 
-                alt={`SVG ${index}`} 
-                title={displayName}
-                />
+      <div className="dropdown">
+        <button onClick={handleDropdownToggle} className="dropdown-button">
+          Budget Buddy
+        </button>
+          {isDropdownOpen && (
+            <div className="dropdown-content">
+              <p className="dropdown-blurb">
+                <a href="https://github.com/toeneeoh/Expense-Tracker" target="_blank" rel="noopener noreferrer" className="dropdown-link">
+                  Budget Buddy
+                </a> is an expense tracker app with AI-powered features, available for web and mobile. It was developed over the course of a semester by a team of four using Agile practices. The app performs functions such as storing user data and serving user requests, including generating financial recommendations with ChatGPT and displaying financial data. Most of the team were not familiar with the technologies used, whcih resulted in some incomplete or broken features, making it an interesting learning experience.
+              </p>
+              {Object.keys(budgetBuddyImages).map((fileName, index) => (
+                <div key={index} className="projects-item">
+                  <img
+                    src={budgetBuddyImages[fileName]}
+                    alt={fileName.replace('.png', '')}
+                    className="projects-image"
+                    onClick={() => handleImageClick(budgetBuddyImages[fileName])}
+                  />
+                </div>
+              ))}
             </div>
-            );
-        })}
-        </div>
+          )}
+      </div>
+
+      {fullscreenImage &&
+        ReactDOM.createPortal(
+          <div className="fullscreen-overlay" onClick={handleCloseFullscreen}>
+            <img src={fullscreenImage} alt="Fullscreen" className="fullscreen-image" />
+          </div>,
+          document.body
+        )}
     </div>
   );
 };
 
-export default Skills;
+export default Projects;

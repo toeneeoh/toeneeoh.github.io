@@ -1,8 +1,9 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import Gallery from './components/Gallery/Gallery';
+import Skills from './components/Skills/Skills';
 import About from './components/About/About';
+import Projects from './components/Projects/Projects';
 
 function Canvas() {
   const location = useLocation();
@@ -28,12 +29,11 @@ function Canvas() {
       </div>
 
       <div className="canvas skills-page">
-        <Gallery />
+        <Skills />
       </div>
 
       <div className="canvas projects-page">
-        <h2>Projects</h2>
-        <p>Here are some projects.</p>
+        <Projects />
       </div>
     </div>
   );
