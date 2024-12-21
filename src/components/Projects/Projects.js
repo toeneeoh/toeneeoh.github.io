@@ -1,20 +1,19 @@
 import React from 'react';
-import './Gallery.css'; // Import the CSS file for styling
-import svgImages from '../../assets/svg/skills'; // Import all SVGs
+import './Projects.css';
+import svgImages from '../../assets/svg/projects';
 
-const Gallery = () => {
+const Skills = () => {
   // Get all SVG file names from the imported object
   const svgFiles = Object.keys(svgImages);
 
   return (
-    <div className="gallery-container">
-        <div className="gallery">
+    <div className="projects-container">
+        <div className="projects">
         {svgFiles.map((fileName, index) => {
-            // Remove the '.svg' extension from the file name
             const displayName = fileName.replace('.svg', '');
 
             return (
-            <div key={index} className="gallery-item">
+            <div key={index} className="projects-item">
                 <img 
                 src={svgImages[fileName]} 
                 alt={`SVG ${index}`} 
@@ -28,4 +27,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default Skills;

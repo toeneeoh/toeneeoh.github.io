@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css'; // Import the CSS file for styling
+import './About.css';
 
 import GitHubIcon from '../../assets/svg/github.svg';
 import LinkedInIcon from '../../assets/svg/linkedin.svg';
@@ -17,7 +17,6 @@ const About = () => {
         </p>
       </div>
       
-      {/* Optionally include social links */}
       <div className="social-links">
         <a href="https://github.com/toeneeoh" target="_blank" rel="noopener noreferrer">
           <img src={GitHubIcon} alt="GitHub" className="social-icon" />

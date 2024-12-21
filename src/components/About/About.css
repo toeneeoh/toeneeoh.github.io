@@ -1,47 +1,47 @@
 .about-container {
-  width: calc(100vw - 40px); /* Full viewport width minus padding */
-  height: calc(100vh - 40px); /* Full viewport height minus padding */
-  margin: 20px auto; /* Centered with margin */
-  padding: 25px; /* Slightly larger padding for comfortable spacing */
-  background-color: #1e1e1e; /* Sleeker dark background */
-  border-radius: 15px; /* Softer rounded corners */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow for depth */
+  width: calc(100vw - 40px);
+  height: calc(100vh - 40px);
+  margin: 20px auto;
+  padding: 25px;
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically centers content */
-  align-items: center; /* Horizontally centers content */
-  font-family: 'Arial', sans-serif; /* Clean, modern font */
-  box-sizing: border-box; /* Ensures padding is within dimensions */
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
 }
 
 .about {
-  color: #f1f1f1; /* Off-white color for less eye strain */
-  text-align: center; /* Center text for better balance */
-  font-size: 1.2rem; /* Comfortable, readable size */
-  line-height: 1.4; /* Slightly spaced lines for readability */
-  margin-bottom: 20px; /* Space beneath the text */
-  width: 80%; /* Keep text content slightly narrower */
+  color: #f1f1f1;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 20px:
+  width: 80%;
 }
 
 .social-links {
   display: flex;
-  gap: 15px; /* Space between social icons */
+  gap: 15px;
   margin-top: 20px;
 }
 
 .social-links a {
-  text-decoration: none; /* Remove underline */
+  text-decoration: none;
 }
 
 .social-icon {
-  width: 40px; /* Set the same width */
-  height: 40px; /* Set the same height */
-  object-fit: contain; /* Ensures the SVG fits within the box */
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
 .social-icon:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
+  transform: scale(1.1);
 }
 
 .about-container {
