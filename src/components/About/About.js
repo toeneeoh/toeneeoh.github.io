@@ -9,9 +9,9 @@ const About = () => {
   return (
     <div className="about-container">
       <div className="about">
-        <h2>About Me</h2>
+        <h2>Antonio Pareja-Lecaros</h2>
         <p>
-          Hello! I'm a senior at George Mason University with a passion for building fun and useful applications.
+          Hello! I'm a George Mason University alumnus with a passion for building fun and useful applications.
           I enjoy working on creative projects that require deeper thinking for solutions.
           I'm always eager to dip my toes into new technologies to expand my skills and grow as a developer.
         </p>
