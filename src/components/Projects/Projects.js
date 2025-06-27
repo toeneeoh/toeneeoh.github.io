@@ -13,11 +13,11 @@ const budgetBuddyImages = importAll(require.context('../../assets/png/budget-bud
 const musicVisualiserImages = importAll(require.context('../../assets/png/music-visualizer', false, /\.png$/));
 
 const Projects = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
   const [fullscreenImage, setFullscreenImage] = useState(null);
 
-  const handleDropdownToggle = () => {
-    setIsDropdownOpen((prevState) => !prevState);
+  const handleDropdownToggle = (name) => {
+    setOpenDropdown((prev) => (prev === name ? null : name));
   };
 
   const handleImageClick = (image) => {
@@ -31,10 +31,10 @@ const Projects = () => {
   return (
     <div className="projects-container">
       <div className="dropdown">
-        <button onClick={handleDropdownToggle} className="dropdown-button">
+        <button onClick={() => handleDropdownToggle('budgetBuddy')} className="dropdown-button">
           Budget Buddy
         </button>
-          {isDropdownOpen && (
+          {openDropdown === 'budgetBuddy' && (
             <div className="dropdown-content">
               <p className="dropdown-blurb">
                 <a href="https://github.com/toeneeoh/Expense-Tracker" target="_blank" rel="noopener noreferrer" className="dropdown-link">
@@ -56,10 +56,10 @@ const Projects = () => {
       </div>
 
       <div className="dropdown">
-        <button onClick={handleDropdownToggle} className="dropdown-button">
+        <button onClick={() => handleDropdownToggle('musicVisualizer')} className="dropdown-button">
           Music Visualizer
         </button>
-          {isDropdownOpen && (
+          {openDropdown === 'musicVisualizer' && (
             <div className="dropdown-content">
               <p className="dropdown-blurb">
                 <a href="https://github.com/toeneeoh/java-music-visualizer" target="_blank" rel="noopener noreferrer" className="dropdown-link">
