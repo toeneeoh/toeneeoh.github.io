@@ -10,6 +10,7 @@ const importAll = (requireContext) =>
   }, {});
 
 const budgetBuddyImages = importAll(require.context('../../assets/png/budget-buddy', false, /\.png$/));
+const musicVisualiserImages = importAll(require.context('../../assets/png/music-visualizer', false, /\.png$/));
 
 const Projects = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -47,6 +48,31 @@ const Projects = () => {
                     alt={fileName.replace('.png', '')}
                     className="projects-image"
                     onClick={() => handleImageClick(budgetBuddyImages[fileName])}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+      </div>
+
+      <div className="dropdown">
+        <button onClick={handleDropdownToggle} className="dropdown-button">
+          Music Visualizer
+        </button>
+          {isDropdownOpen && (
+            <div className="dropdown-content">
+              <p className="dropdown-blurb">
+                <a href="https://github.com/toeneeoh/java-music-visualizer" target="_blank" rel="noopener noreferrer" className="dropdown-link">
+                  Music Visualizer
+                </a> is a simple program written in Java that serves as an audio player with visible audio bands that render as a file is playing. I made it as a quick brush up for me on the common practices of the language. Admittedly, I had no idea what a Fast Fourier Transform was or how complicated working with different file types could be, so I had AI teach me and help implement what I needed to save hours of searching online.
+              </p>
+              {Object.keys(musicVisualiserImages).map((fileName, index) => (
+                <div key={index} className="projects-item">
+                  <img
+                    src={musicVisualiserImages[fileName]}
+                    alt={fileName.replace('.png', '')}
+                    className="projects-image"
+                    onClick={() => handleImageClick(musicVisualiserImages[fileName])}
                   />
                 </div>
               ))}
