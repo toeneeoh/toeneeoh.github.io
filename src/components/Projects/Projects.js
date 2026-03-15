@@ -39,7 +39,7 @@ const Projects = () => {
               <p className="dropdown-blurb">
                 <a href="https://github.com/toeneeoh/Expense-Tracker" target="_blank" rel="noopener noreferrer" className="dropdown-link">
                   Budget Buddy
-                </a> is an expense tracker app on web and mobile with AI-powered features. It was developed over the course of a semester in my group of four using Agile practices. The app performs functions such as storing user data and serving user requests, including generating financial recommendations with ChatGPT and displaying financial data. The other members of my team were not as familiar or used to the technologies we used, which resulted in some incomplete or broken features. It was a unique experience for me because it felt like I was the lead / senior engineer guiding the other members while making critical decisions about the tools we used.
+                </a> is an expense tracker app on web and mobile with AI-powered features. It was developed over the course of a semester in my group of four using Agile practices. The app performs functions such as storing user data and serving user requests, including generating financial recommendations with an LLM and displaying financial data. Other members of my team were not as familiar with the technologies we used, so it was quite challenging to guide them through the stack. It was a unique experience for me because it felt like I was the senior engineer directing a team while making critical decisions about the project.
               </p>
               {Object.keys(budgetBuddyImages).map((fileName, index) => (
                 <div key={index} className="projects-item">
