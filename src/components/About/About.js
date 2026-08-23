@@ -1,35 +1,16 @@
-import React from 'react';
 import './About.css';
-
 import GitHubIcon from '../../assets/svg/github.svg';
 import LinkedInIcon from '../../assets/svg/linkedin.svg';
 import EmailIcon from '../../assets/svg/gmail.svg';
 
-const About = () => {
-  return (
-    <div className="about-container">
-      <div className="about">
-        <h2>Antonio Pareja-Lecaros</h2>
-        <p>
-          Hello! I'm a George Mason University alumnus with a passion for building fun and useful applications.
-          I enjoy working on creative projects that require deeper thinking for solutions.
-          I'm always eager to dip my toes into new technologies to expand my skills and grow as a developer.
-        </p>
-      </div>
-      
-      <div className="social-links">
-        <a href="https://github.com/toeneeoh" target="_blank" rel="noopener noreferrer">
-          <img src={GitHubIcon} alt="GitHub" className="social-icon" />
-        </a>
-        <a href="https://linkedin.com/in/tony-pl" target="_blank" rel="noopener noreferrer">
-          <img src={LinkedInIcon} alt="LinkedIn" className="social-icon" />
-        </a>
-        <a href="mailto:toeneeoh@gmail.com">
-          <img src={EmailIcon} alt="Email" className="social-icon" />
-        </a>
-      </div>
-    </div>
-  );
-};
+const socials = [
+  { href:'https://github.com/toeneeoh', label:'GitHub', icon:GitHubIcon },
+  { href:'https://linkedin.com/in/tony-pl', label:'LinkedIn', icon:LinkedInIcon },
+  { href:'mailto:toeneeoh@gmail.com', label:'Email', icon:EmailIcon },
+];
 
-export default About;
+export default function About() {
+  return <section className="section about-section" id="about" aria-label="About">
+    <div className="about-copy"><p className="about-lead">I’m a George Mason University alumnus who enjoys building applications that are both useful and enjoyable to use.</p><p>The projects I value most require deeper thinking: understanding an unfamiliar system, making a complicated idea feel simple, or helping a team move from uncertainty to a working product. I’m energized by new technologies, candid collaboration, and the moment a difficult problem finally clicks.</p><div className="social-row">{socials.map(social => <a href={social.href} key={social.label} target={social.href.startsWith('http')?'_blank':undefined} rel="noreferrer"><img src={social.icon} alt=""/><span>{social.label}</span><b aria-hidden="true">↗</b></a>)}</div></div>
+  </section>;
+}

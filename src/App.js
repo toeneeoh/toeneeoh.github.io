@@ -1,66 +1,40 @@
+import { useEffect, useState } from 'react';
 import './App.css';
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import Skills from './components/Skills/Skills';
 import About from './components/About/About';
 import Projects from './components/Projects/Projects';
+import Skills from './components/Skills/Skills';
 
-function Canvas() {
-  const location = useLocation();
-  const [currentCanvas, setCurrentCanvas] = useState(0);
+const navigation = [['work', 'Work'], ['skills', 'Skills'], ['about', 'About']];
+
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    switch (location.pathname) {
-      case '/skills':
-        setCurrentCanvas(1);
-        break;
-      case '/projects':
-        setCurrentCanvas(2);
-        break;
-      default:
-        setCurrentCanvas(0);
-    }
-  }, [location.pathname]);
+    const section = { '/projects': 'work', '/skills': 'skills' }[window.location.pathname];
+    if (section) window.requestAnimationFrame(() => document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' }));
+  }, []);
 
   return (
-    <div className="canvas-container" style={{ transform: `translateX(-${currentCanvas * 100}vw)` }}>
-      <div className="canvas about-page">
-        <About />
-      </div>
+    <div className="site-shell">
+      <a className="skip-link" href="#main">Skip to content</a>
+      <header className="site-header">
+        <a className="brand" href="#main" aria-label="Back to top">&lt;/&gt;</a>
+        <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="site-navigation" onClick={() => setMenuOpen(!menuOpen)}>
+          <span className="sr-only">Toggle navigation</span>{menuOpen ? 'Close' : 'Menu'}
+        </button>
+        <nav id="site-navigation" className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Primary navigation">
+          {navigation.map(([id, label]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+        </nav>
+      </header>
 
-      <div className="canvas skills-page">
-        <Skills />
-      </div>
-
-      <div className="canvas projects-page">
+      <main id="main">
         <Projects />
-      </div>
+        <Skills />
+        <About />
+      </main>
+      <footer><a href="#main">Back to top ↑</a></footer>
     </div>
   );
 }
 
-function Navigate() {
-  const navigate = useNavigate();
-
-  return (
-    <div className="App">
-      {/* Navigation bar */}
-      <nav className="navbar">
-        <div className="navbar-title">Tony.PL</div>
-        <div className="navbar-links">
-          <button onClick={() => navigate('/')}>About</button>
-          <button onClick={() => navigate('/skills')}>Skills</button>
-          <button onClick={() => navigate('/projects')}>Projects</button>
-        </div>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Canvas />} />
-        <Route path="/skills" element={<Canvas />} />
-        <Route path="/projects" element={<Canvas />} />
-      </Routes>
-    </div>
-  );
-}
-
-export default Navigate;
+export default App;
